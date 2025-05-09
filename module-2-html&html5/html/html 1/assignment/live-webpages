@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>=     
+    <meta charset='utf-8'>
+    <meta http-equiv='x-ua-comatible'content='IE=edge'>
+<title>page title></title>
+<meta name='viewport'content='width=device-width,initial-scale=1'>
+<link rel='stylesheet'type='text/css'media='screen'href='main.css'>
+<script src='main.js'></script>
+</head>
+<body> <bgcolor="skyblow">
+<h1> align="center">we are comming soon!</h1>
+<p>lorem ipsum dolor sit amet consectetur adipising elit.dolorem quae
+     neque placeat est at ducims facilis eveniet provident eius fuga.
+     cumque temporibus ab alias tempora doloremque dolores aspernatur lilum 
+     provident?</p>
+<ul>
+            <li><a href="#">home</a></li>
+                 <li><a href="#">about</a></li> 
+                    <li><a href="#">service/a></li>
+                        <li><a href="#">protfolices</a></li>
+                                 <li><a href="#">contact</a></li>
+                                      <li><a href="#">account</a></li>
+                                           <li><a href="#">feedback</a></li>       
+                                                        <li><a href="#">faq</a></li>
+      
+<!--https://www.fipkart.com/-->
+                    </ul>
+                </body>
+                    </html>
