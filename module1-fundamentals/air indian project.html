@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    # air_india_booking.py
+
+flights = [
+    {"flight_no": "AI101", "from": "Delhi", "to": "Mumbai", "seats": 5},
+    {"flight_no": "AI202", "from": "Mumbai", "to": "Bangalore", "seats": 3},
+    {"flight_no": "AI303", "from": "Chennai", "to": "Kolkata", "seats": 4}
+]
+
+bookings = []
+
+def list_flights():
+    print("\nAvailable Air India Flights:")
+    for flight in flights:
+        print(f"{flight['flight_no']}: {flight['from']} → {flight['to']} | Seats Left: {flight['seats']}")
+
+def book_flight():
+    flight_no = input("Enter flight number to book: ")
+    for flight in flights:
+        if flight["flight_no"] == flight_no:
+            if flight["seats"] > 0:
+                name = input("Enter passenger name: ")
+                bookings.append({"name": name, "flight_no": flight_no})
+                flight["seats"] -= 1
+                print(f"Booking confirmed for {name} on flight {flight_no}!")
+                return
+            else:
+                print("Sorry, no seats available.")
+                return
+    print("Invalid flight number.")
+
+def show_bookings():
+    print("\nAll Bookings:")
+    for b in bookings:
+        print(f"{b['name']} → Flight {b['flight_no']}")
+
+while True:
+    print("\n--- Air India Flight Booking System ---")
+    print("1. List Flights\n2. Book Flight\n3. Show Bookings\n4. Exit")
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        list_flights()
+    elif choice == "2":
+        book_flight()
+    elif choice == "3":
+        show_bookings()
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice.")
+
+</body>
+</html>
