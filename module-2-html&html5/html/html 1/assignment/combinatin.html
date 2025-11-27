@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirLines Reservation System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>/* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Layer 1: Header */
+.header-layer {
+  background: linear-gradient(90deg, #004080, #0066cc);
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  letter-spacing: 1px;
+}
+
+/* Layer 2: Navigation */
+.nav-layer {
+  background: #003366;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.nav-layer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.nav-layer li {
+  margin: 0 20px;
+}
+
+.nav-layer a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-layer a:hover {
+  background: #0077cc;
+}
+
+/* Layer 3: Main Section */
+.main-layer {
+  display: flex;
+  padding: 20px;
+  background: #f4f8fc;
+}
+
+/* Sidebar (Left Layer Element) */
+.sidebar {
+  width: 25%;
+  background: #e6f2ff;
+  border-right: 3px solid #cce0ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.search-box input, .search-box button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-box button {
+  background: #005fa3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #003366;
+}
+
+/* Main Content */
+main {
+  width: 75%;
+  padding: 0 20px;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.slide {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* Content Section */
+.content {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.content h2 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+/* Layer 4: Footer */
+.footer-layer {
+  background: #00264d;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+</style>
+  <!-- Layer 1: Header -->
+  <header class="layer header-layer">
+    <h1>✈️ AirLines Reservation System</h1>
+  </header>
+
+  <!-- Layer 2: Navigation -->
+  <nav class="layer nav-layer">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Our AirCraft</a></li>
+      <li><a href="#">Safety</a></li>
+      <li><a href="#">Charters</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Layer 3: Main Section -->
+  <div class="layer main-layer">
+
+    <!-- Sidebar (Vertical Menu) -->
+    <aside class="sidebar">
+      <div class="search-box">
+        <h3>🔍 Search Flight</h3>
+        <input type="text" placeholder="From">
+        <input type="text" placeholder="To">
+        <input type="date">
+        <button>Search</button>
+      </div>
+
+      <div class="news">
+        <h3>📰 Recent News</h3>
+        <ul>
+          <li>New routes to Asia announced!</li>
+          <li>Discounts for early bird travelers.</li>
+          <li>Private charter flights available.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main>
+      <div class="slider">
+        <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92" class="slide active">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df" class="slide">
+        <img src="https://images.unsplash.com/photo-1498982261566-61053e95e99c" class="slide">
+      </div>
+
+      <section class="content">
+        <h2>Welcome to AirLines</h2>
+        <p>
+          Experience world-class travel at affordable prices.  
+          Search, compare, and book your next flight — faster and safer than ever before.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Layer 4: Footer -->
+  <footer class="layer footer-layer">
+    <p>© 2025 AirLines Reservation. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Simple Auto Slider
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 3000);
+  </script>
+
+</body>
+</html>
