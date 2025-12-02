@@ -1,0 +1,30 @@
+what is github  ?
+
+  github
+    github is a product of microsoft
+    it is a version control system
+    it is used to create, store, and collaborate on code
+    it provides features like branching, merging, and code review
+    it is a platform for hosting and sharing projects
+    it is a powerful tool for software development
+    it is used by developers, teams, and organizations worldwide
+    github is a popular choice for open-source projects
+    github is a great platform for hosting and collaborating on projects
+    
+   github commands ?
+   
+    git clone <repository-url></repository-url>
+    git status
+    git add <file-name></file-name>
+    git commit -m "<commit-message>"
+    git push origin <branch-name></branch-name>
+    git pull origin <branch-name></branch-name>
+    git checkout -b <branch-name></branch-name>
+    git merge <branch-name></branch-name>
+    git branch -d <branch-name></branch-name>
+    git log
+    git reset --hard <commit-hash>
+    git stash
+    git stash pop
+    git fetch origin
+    git rebase origin/<branch-name>
