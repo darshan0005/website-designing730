@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>darshan Phone </title>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #e0e0e0;
+    font-family: Arial, sans-serif;
+  }
+
+  .mobile {
+    width: 260px;
+    height: 500px;
+    background: #111;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Screen */
+  .screen {
+    width: 92%;
+    height: 88%;
+    background: #ffffff;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Notch */
+  .notch {
+    width: 120px;
+    height: 20px;
+    background: #111;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* Buttons */
+  .power-btn {
+    width: 4px;
+    height: 60px;
+    background: #333;
+    position: absolute;
+    right: -4px;
+    top: 150px;
+    border-radius: 2px;
+  }
+
+  .volume-btn {
+    width: 4px;
+    height: 80px;
+    background: #333;
+    position: absolute;
+    left: -4px;
+    top: 130px;
+    border-radius: 2px;
+  }
+
+  /* Example text inside screen */
+  .screen-text {
+    text-align: center;
+    margin-top: 180px;
+    color: #111;
+    font-size: 22px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="mobile">
+  <div class="notch"></div>
+  <div class="power-btn"></div>
+  <div class="volume-btn"></div>
+  <div class="screen">
+    <div class="screen-text">Mobile Screen</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Responsive Layout</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <style>/* ---------- GLOBAL STYLING ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+/* Header */
+.header {
+    background: #003366;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav a {
+    margin-left: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Footer */
+.footer {
+    background: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* FLEX MAIN LAYOUT */
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Boxes */
+.box {
+    flex: 1;
+    background: #99ccff;
+    padding: 50px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Contact Form */
+.form {
+    background: #ffffff;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.form input, .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+</style>
+
+<style>body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Header */
+.header {
+    background: #330066;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav a {
+    margin-left: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Footer */
+.footer {
+    background: #330066;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* GRID MAIN LAYOUT */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Boxes */
+.box {
+    background: #cc99ff;
+    padding: 50px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Contact Form */
+.form {
+    background: #ffffff;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.form input, .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<header class="header">
+    <h1 class="logo">MY WEBSITE</h1>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <form class="form" onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name" maxlength="6" minlength="3" required
+               pattern="[A-Za-z]{3,6}"
+               placeholder="Enter name (3–6 alphabets)">
+
+        <label>Email:</label>
+        <input type="email" id="email" required placeholder="Enter email">
+
+        <label>Message:</label>
+        <textarea id="msg" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</main>
+
+<footer class="footer">
+    <p>© 2025 My Website</p>
+</footer>
+
+<script>
+function validateForm() {
+    let n = document.getElementById("name").value.trim();
+    let e = document.getElementById("email").value.trim();
+    let m = document.getElementById("msg").value.trim();
+
+    if(n === "" || e === "" || m === "") {
+        alert("All fields are required!");
+        return false;
+    }
+    return true;
+}
+</script>
+
+</body>
+</html>
