@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Content Audit – Taskify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 24px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .issue {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+    .improve {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Content Audit Report</h1>
+  <p class="note">
+    Product: <strong>Taskify</strong><br>
+    Purpose: Identify weak copy and recommend improvements
+  </p>
+
+  <!-- Home Page Audit -->
+  <h2>Home Page</h2>
+  <table>
+    <tr>
+      <th>Element</th>
+      <th>Current Copy</th>
+      <th>Issue</th>
+      <th>Improved Copy</th>
+    </tr>
+    <tr>
+      <td>Headline</td>
+      <td>Welcome to Taskify</td>
+      <td class="issue">Too generic, no value proposition</td>
+      <td class="improve">Organize your tasks in minutes, not hours</td>
+    </tr>
+    <tr>
+      <td>CTA Button</td>
+      <td>Get Started</td>
+      <td class="issue">Unclear action</td>
+      <td class="improve">Create your free task list</td>
+    </tr>
+  </table>
+
+  <!-- Sign Up Page Audit -->
+  <h2>Sign Up Page</h2>
+  <table>
+    <tr>
+      <th>Element</th>
+      <th>Current Copy</th>
+      <th>Issue</th>
+      <th>Improved Copy</th>
+    </tr>
+    <tr>
+      <td>Email Label</td>
+      <td>Email</td>
+      <td class="issue">No reassurance or clarity</td>
+      <td class="improve">Email address<br><span class="note">We’ll only use this to contact you.</span></td>
+    </tr>
+    <tr>
+      <td>Password Help</td>
+      <td>(None)</td>
+      <td class="issue">Causes form errors</td>
+      <td class="improve">Use at least 8 characters</td>
+    </tr>
+    <tr>
+      <td>Submit Button</td>
+      <td>Submit</td>
+      <td class="issue">Generic and impersonal</td>
+      <td class="improve">Create my account</td>
+    </tr>
+  </table>
+
+  <!-- Dashboard Audit -->
+  <h2>Dashboard</h2>
+  <table>
+    <tr>
+      <th>Element</th>
+      <th>Current Copy</th>
+      <th>Issue</th>
+      <th>Improved Copy</th>
+    </tr>
+    <tr>
+      <td>Empty State</td>
+      <td>No tasks</td>
+      <td class="issue">Does not guide user</td>
+      <td class="improve">You have no tasks yet—add your first one to get started</td>
+    </tr>
+    <tr>
+      <td>Add Button</td>
+      <td>+</td>
+      <td class="issue">Unclear meaning</td>
+      <td class="improve">Add new task</td>
+    </tr>
+  </table>
+
+  <!-- Error Messages Audit -->
+  <h2>Error Messages</h2>
+  <table>
+    <tr>
+      <th>Current Message</th>
+      <th>Issue</th>
+      <th>Improved Message</th>
+    </tr>
+    <tr>
+      <td>Error occurred</td>
+      <td class="issue">Vague and unhelpful</td>
+      <td class="improve">We couldn’t save your task. Please try again.</td>
+    </tr>
+    <tr>
+      <td>Invalid input</td>
+      <td class="issue">Blames the user</td>
+      <td class="improve">Check the highlighted fields and try again.</td>
+    </tr>
+  </table>
+
+</body>
+</html>

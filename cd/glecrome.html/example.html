@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Microcopy Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+    }
+    .helper {
+      font-size: 0.85em;
+      color: #555;
+    }
+    .error {
+      font-size: 0.85em;
+      color: #d32f2f;
+    }
+    nav a {
+      margin-right: 16px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#pricing">View pricing</a>
+    <a href="#signup">Create an account</a>
+  </nav>
+
+  <h2>Sign Up</h2>
+
+  <form id="signupForm">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+      <div class="helper">We’ll only use this to contact you.</div>
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="••••••••" />
+      <div class="helper">At least 8 characters.</div>
+      <div class="error" id="passwordError"></div>
+    </div>
+
+    <button type="submit">Continue to dashboard</button>
+  </form>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      if (!email.includes("@")) {
+        document.getElementById("emailError").textContent =
+          "Enter a valid email (example: name@email.com).";
+      }
+
+      if (password.length < 8) {
+        document.getElementById("passwordError").textContent =
+          "Your password must be at least 8 characters long.";
+      }
+    });
+  </script>
+
+</body>
+</html>

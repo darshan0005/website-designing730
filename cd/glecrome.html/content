@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Content Strategy – StudyBuddy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      padding: 24px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    section {
+      background: #ffffff;
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #eef1f4;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Content Strategy Document</h1>
+  <p class="note"><strong>Product:</strong> StudyBuddy (Study Planner App)</p>
+
+  <section>
+    <h2>Purpose</h2>
+    <p>
+      The content strategy ensures all in-app copy helps students plan their
+      study time easily, stay motivated, and avoid overwhelm.
+    </p>
+  </section>
+
+  <section>
+    <h2>Target Audience</h2>
+    <ul>
+      <li>Students aged 13–18</li>
+      <li>Mobile-first users</li>
+      <li>Users who prefer simple, clear instructions</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Voice & Tone</h2>
+    <ul>
+      <li>Friendly and supportive</li>
+      <li>Clear and concise</li>
+      <li>Encouraging, never judgmental</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Content Types</h2>
+    <table>
+      <tr>
+        <th>Content Area</th>
+        <th>Goal</th>
+        <th>Example Copy</th>
+      </tr>
+      <tr>
+        <td>Onboarding</td>
+        <td>Explain value quickly</td>
+        <td>“Let’s plan your first study session”</td>
+      </tr>
+      <tr>
+        <td>Buttons</td>
+        <td>Guide actions</td>
+        <td>“Add study task”</td>
+      </tr>
+      <tr>
+        <td>Empty States</td>
+        <td>Encourage engagement</td>
+        <td>“No sessions yet—start with one!”</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>Reduce frustration</td>
+        <td>“We couldn’t save that. Please try again.”</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Success Metrics</h2>
+    <ul>
+      <li>Increase in task creation</li>
+      <li>Higher onboarding completion rate</li>
+      <li>Reduced user drop-off</li>
+    </ul>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Management System</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f2f2f2;
+        margin:0;
+        padding:0;
+    }
+
+    header{
+        background:#2c3e50;
+        color:white;
+        padding:15px;
+        text-align:center;
+    }
+
+    .container{
+        width:400px;
+        background:white;
+        margin:30px auto;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    label{
+        font-weight:bold;
+        display:block;
+        margin-top:10px;
+    }
+
+    input, select{
+        width:100%;
+        padding:8px;
+        margin-top:5px;
+        border-radius:5px;
+        border:1px solid #ccc;
+    }
+
+    button{
+        width:100%;
+        margin-top:20px;
+        padding:10px;
+        background:#27ae60;
+        color:white;
+        border:none;
+        border-radius:5px;
+        font-size:16px;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background:#219150;
+    }
+
+    .result{
+        margin-top:15px;
+        padding:10px;
+        background:#ecf0f1;
+        border-radius:5px;
+    }
+
+    footer{
+        background:#2c3e50;
+        color:white;
+        text-align:center;
+        padding:10px;
+        position:fixed;
+        bottom:0;
+        width:100%;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Hotel Management System</h1>
+    <p>Room Booking Page</p>
+</header>
+
+<div class="container">
+    <label>Guest Name</label>
+    <input type="text" id="name">
+
+    <label>Room Type</label>
+    <select id="room">
+        <option value="1000">Single Room - ₹1000/day</option>
+        <option value="2000">Double Room - ₹2000/day</option>
+        <option value="3000">Deluxe Room - ₹3000/day</option>
+    </select>
+
+    <label>Number of Days</label>
+    <input type="number" id="days" min="1">
+
+    <button onclick="bookRoom()">Book Room</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<footer>
+    © 2025 Hotel Management System
+</footer>
+
+<script>
+    function bookRoom(){
+        let name = document.getElementById("name").value;
+        let price = document.getElementById("room").value;
+        let days = document.getElementById("days").value;
+
+        if(name === "" || days === ""){
+            alert("Please fill all details");
+            return;
+        }
+
+        let total = price * days;
+
+        document.getElementById("output").innerHTML =
+            "<b>Guest:</b> " + name +
+            "<br><b>Days:</b> " + days +
+            "<br><b>Total Bill:</b> ₹" + total;
+    }
+</script>
+
+</body>
+</html>

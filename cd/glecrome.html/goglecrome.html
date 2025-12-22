@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google Chrome Logo</title>
+
+<style>
+    body{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:#f2f2f2;
+        font-family:Arial;
+    }
+
+    .chrome-logo{
+        width:200px;
+        height:200px;
+        border-radius:50%;
+        background:conic-gradient(
+            #db4437 0deg 120deg,
+            #f4b400 120deg 240deg,
+            #0f9d58 240deg 360deg
+        );
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        position:relative;
+    }
+
+    .chrome-logo::before{
+        content:"";
+        position:absolute;
+        width:140px;
+        height:140px;
+        background:white;
+        border-radius:50%;
+    }
+
+    .center{
+        width:90px;
+        height:90px;
+        background:#4285f4;
+        border-radius:50%;
+        position:absolute;
+        border:6px solid white;
+    }
+
+    h2{
+        position:absolute;
+        bottom:-50px;
+        color:#333;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="chrome-logo">
+    <div class="center"></div>
+    <h2>Google Chrome</h2>
+</div>
+
+</body>
+</html>

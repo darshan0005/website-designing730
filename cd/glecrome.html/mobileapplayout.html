@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile App Layout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+   
+    <style>
+        /* /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  background: #007bff;
+  color: white;
+  text-align: center;
+  padding: 16px;
+}
+
+/* Content area */
+.app-content {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Touch-friendly button */
+.primary-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.primary-btn:active {
+  background: #0056b3;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  border-top: 1px solid #ccc;
+  padding: 8px 0;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bottom-nav span {
+  font-size: 12px;
+  margin-top: 4px;
+}
+Reset */
+    </style>
+  <!-- App Header -->
+  <header class="app-header">
+    <h1>My App</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-content">
+    <div class="card">
+      <h2>Welcome</h2>
+      <p>This is a touch-friendly mobile app layout.</p>
+      <button class="primary-btn">Get Started</button>
+    </div>
+
+    <div class="card">
+      <h2>Features</h2>
+      <p>Designed for thumbs and small screens.</p>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button>🏠<span>Home</span></button>
+    <button>🔍<span>Search</span></button>
+    <button>❤️<span>Likes</span></button>
+    <button>⚙️<span>Settings</span></button>
+  </nav>
+
+</body>
+</html>

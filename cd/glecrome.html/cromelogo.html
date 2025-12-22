@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chrome Logo</title>
+
+<style>
+    body{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:#eeeeee;
+    }
+
+    .chrome-logo{
+        width:220px;
+        height:220px;
+        border-radius:50%;
+        background:conic-gradient(
+            #db4437 0deg 120deg,
+            #f4b400 120deg 240deg,
+            #0f9d58 240deg 360deg
+        );
+        position:relative;
+    }
+
+    .inner-white{
+        width:150px;
+        height:150px;
+        background:white;
+        border-radius:50%;
+        position:absolute;
+        top:35px;
+        left:35px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .center-blue{
+        width:90px;
+        height:90px;
+        background:#4285f4;
+        border-radius:50%;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="chrome-logo">
+    <div class="inner-white">
+        <div class="center-blue"></div>
+    </div>
+</div>
+
+</body>
+</html>

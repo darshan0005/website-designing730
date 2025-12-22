@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery Logo</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f2f2f2;
+        font-family: Arial, sans-serif;
+    }
+
+    .gallery-logo {
+        width: 90px;
+        height: 70px;
+        background: #ffffff;
+        border: 3px solid #222;
+        border-radius: 6px;
+        position: relative;
+        box-shadow: 4px 4px 0 #222;
+    }
+
+    /* Back photo */
+    .gallery-logo::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        width: 90px;
+        height: 70px;
+        background: #fff;
+        border: 3px solid #222;
+        border-radius: 6px;
+        z-index: -1;
+    }
+
+    /* Sun */
+    .sun {
+        width: 10px;
+        height: 10px;
+        background: #222;
+        border-radius: 50%;
+        position: absolute;
+        top: 10px;
+        right: 12px;
+    }
+
+    /* Mountains */
+    .mountain {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 30px solid #222;
+    }
+
+    .mountain.small {
+        left: 32px;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        border-bottom: 22px solid #444;
+    }
+
+    /* Text */
+    .text {
+        text-align: center;
+        margin-top: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+</style>
+</head>
+
+<body>
+
+<div>
+    <div class="gallery-logo">
+        <div class="sun"></div>
+        <div class="mountain"></div>
+        <div class="mountain small"></div>
+    </div>
+    <div class="text">GALLERY</div>
+</div>
+
+</body>
+</html>
