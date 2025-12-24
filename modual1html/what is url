@@ -1,0 +1,35 @@
+what is url   ? 
+
+ url : url stands for  universal resource locator 
+ it is a string that uniquely identifies a resource on the internet. it is a combination of protocol, domain name, path and optional query parameters.
+
+
+ For example, consider the following URLs:
+
+  https://www.tops-int.com 
+
+  https://www.example.com/articles/web-development/page/2/
+
+ - https://www.example.com/articles/web-development/
+
+ - https://www.example.com/articles/web-development/page/2/
+
+ - https://www.example.com/articles/web-development?category=programming&sort=latest
+
+ In the first URL, the protocol is https, the domain name is www.example.com, the path is /articles/web-development/, and there is no query parameter.
+
+ In the second URL, the path is the same (/articles/web-development/) but the page number is added as a query parameter (page=2).
+
+
+
+ types of url 
+
+ There are three main types of URLs:
+
+ 1. HTTP URL: This is the most common type, used for accessing web pages over the internet. It starts with http:// or https://. For example, http://www.example.com/articles/web-development.
+
+ 2. FTP URL: This type is used for transferring files from one computer to another over a network. It starts with ftp://. For example, ftp://ftp.example.com/public_html/index.html.
+
+ 3. Mailto URL: This type is used for sending email messages. It starts with mailto: followed by the recipient's email address. For example, mailto:john.doe@example.com?subject=Important%20Message.
+
+In summary, a URL is a string that uniquely identifies a resource on the internet. It consists of a protocol, domain name, path, and optional query parameters. The three main types of URLs are HTTP, FTP, and Mailto
