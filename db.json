@@ -1,0 +1,108 @@
+{
+  "User": [],
+  "Products": [
+    {
+      "ProductName": "Samsung 4k Smart 64Inch TV",
+      "Category": "Electronics",
+      "Price": "68000",
+      "Description": "Samsung 4k Smart 64Inch TV",
+      "Quantity": "10",
+      "ProductImage": "https://images.samsung.com/is/image/samsung/p6pim/in/qa43qef6aulxl/gallery/in-qled-tv-qa43qef6aulxl------m------qled-qef---k-samsung-vision-ai-smart-tv-titanium-gray-548462571?$Q90_684_547_JPG$",
+      "BrandName": "Samsung",
+      "Discount": "12",
+      "id": "519c"
+    },
+    {
+      "ProductName": "Acer Ultra",
+      "Category": "Electronics",
+      "Price": "39,999",
+      "Description": "Acer Ultra I Series 163.8 cm (65 inch) Ultra HD (4K) LED Smart Google TV 2025 Edition  (AR65UDGGU2875BD)",
+      "Quantity": "25",
+      "ProductImage": "https://rukminim2.flixcart.com/image/312/312/xif0q/television/b/g/m/-original-imahgj5xuztgnrd9.jpeg?q=70",
+      "BrandName": "Acer",
+      "Discount": "50",
+      "id": "275d"
+    },
+    {
+      "ProductName": "PHILIPS 164 cm (65 inch) QLED Ultra HD",
+      "Category": "Electronics",
+      "Price": "41,999",
+      "Description": "PHILIPS 164 cm (65 inch) QLED Ultra HD (4K) Smart Google TV 2025 Edition with Dolby Vision |30W Dolby Atmos | 120Hz Refresh Rate | HDR 10+ |Wider Colour Gamut | Ultra Narrow Bezel | 32 GB Storage  (65PQT8100/94)",
+      "Quantity": "12",
+      "ProductImage": "https://rukminim2.flixcart.com/image/312/312/xif0q/television/l/l/k/-original-imahf64jrajrp7vc.jpeg?q=70",
+      "BrandName": "Philips",
+      "Discount": "23",
+      "id": "e36d"
+    },
+    {
+      "ProductName": "SONY BRAVIA 2 ",
+      "Category": "Electronics",
+      "Price": "55,990",
+      "Description": "SONY BRAVIA 2 II 138.8 cm (55 inch) Ultra HD (4K) LED Smart Google TV 2024 Edition  (K-55S25EM2)",
+      "Quantity": "10",
+      "ProductImage": "https://rukminim2.flixcart.com/image/312/312/xif0q/television/f/p/f/-original-imahgqtpyrz5gx4c.jpeg?q=70",
+      "BrandName": "Sony",
+      "Discount": "39",
+      "id": "a40b"
+    }
+  ],
+  "ContactUs": [],
+  "Order": [],
+  "Cart": [
+    {
+      "id": "de6b",
+      "ProductImage": "https://images.samsung.com/is/image/samsung/p6pim/in/qa43qef6aulxl/gallery/in-qled-tv-qa43qef6aulxl------m------qled-qef---k-samsung-vision-ai-smart-tv-titanium-gray-548462571?$Q90_684_547_JPG$",
+      "ProductName": "Samsung 4k Smart 64Inch TV",
+      "Price": "68000",
+      "Quantity": 1
+    }
+  ],
+  "WhishList": [
+    {
+      "id": "3d36",
+      "ProductImage": "https://images.samsung.com/is/image/samsung/p6pim/in/qa43qef6aulxl/gallery/in-qled-tv-qa43qef6aulxl------m------qled-qef---k-samsung-vision-ai-smart-tv-titanium-gray-548462571?$Q90_684_547_JPG$",
+      "ProductName": "Samsung 4k Smart 64Inch TV",
+      "Price": "68000"
+    },
+    {
+      "id": "e1f2",
+      "ProductImage": "https://images.samsung.com/is/image/samsung/p6pim/in/qa43qef6aulxl/gallery/in-qled-tv-qa43qef6aulxl------m------qled-qef---k-samsung-vision-ai-smart-tv-titanium-gray-548462571?$Q90_684_547_JPG$",
+      "ProductName": "Samsung 4k Smart 64Inch TV",
+      "Price": "68000"
+    },
+    {
+      "id": "5521",
+      "ProductImage": "https://images.samsung.com/is/image/samsung/p6pim/in/qa43qef6aulxl/gallery/in-qled-tv-qa43qef6aulxl------m------qled-qef---k-samsung-vision-ai-smart-tv-titanium-gray-548462571?$Q90_684_547_JPG$",
+      "ProductName": "Samsung 4k Smart 64Inch TV",
+      "Price": "68000"
+    },
+    {
+      "id": "4c0f",
+      "ProductImage": "https://rukminim2.flixcart.com/image/312/312/xif0q/television/b/g/m/-original-imahgj5xuztgnrd9.jpeg?q=70",
+      "ProductName": "Acer Ultra",
+      "Price": "39,999"
+    }
+  ],
+  "Category": [
+    {
+      "id": "cac2",
+      "CategoryName": "Electronics",
+      "CategoryImage": "https://media.istockphoto.com/id/1211554164/photo/3d-render-of-home-appliances-collection-set.jpg?s=612x612&w=0&k=20&c=blm3IyPyZo5ElWLOjI-hFMG-NrKQ0G76JpWGyNttF8s="
+    },
+    {
+      "id": "67f0",
+      "CategoryName": "Clothes",
+      "CategoryImage": "https://img.freepik.com/free-photo/shop-clothing-clothes-shop-hanger-modern-shop-boutique_1150-8886.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": "91fc",
+      "CategoryName": "Toys",
+      "CategoryImage": "https://images.unsplash.com/photo-1599623560574-39d485900c95?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG95c3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": "a937",
+      "CategoryName": "Grocery",
+      "CategoryImage": "https://media.istockphoto.com/id/1283712032/photo/cardboard-box-filled-with-non-perishable-foods-on-wooden-table-high-angle-view.jpg?s=612x612&w=0&k=20&c=7B2cUwQB2LeBmIh5JElkO5DoE7GRq-CRVmERsMSJoVY="
+    }
+  ]
+}
