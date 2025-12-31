@@ -1,0 +1,84 @@
+<<<<<<head
+<!--
+    what is boostrap?
+
+    boostrap is a framework of websitedesigng
+
+    boostrap is a used to designresponsive website 
+
+    boostrap is a free and open-source front-endframeworkfor typogrphy.
+    forms.buttons.navigation.and other interface components,sebsite and webapplication
+
+    boostrap contains css-and javascrip-based design templates for typeography,
+
+    boostrap also provides optional javascrip framework for devloping responsive,mobile
+    first projects on the web.
+
+    boostrap is the most popular html,css and javascrip framework for devloping responsive,mobilefirst
+    projects on the web.
+
+    boostrap is a free and open-source front-end framework for designing websites and  web application.
+
+    boostrap is a framework for buiding responsive websites and web application
+
+
+what is meant by responsivewebsite?
+
+responsive websites are websites that automatically adjust their layout and content based on the size of the user
+screen or device.this means that whether a user is viewing the website on a desttop computer,tablet,or  smartphones,the website will
+look good and be easy to use.
+
+responsive design is an approach to web design that makes web pages render well on a variety of device and window or screensizes.
+recent work also considers the viewer proximity as part of the viewering context as on extension for rwd.
+
+broswers device breakpoints for responsive design
+
+
+| device type                        |breakpoints
+
+|----------------------------|-----------------------------
+
+|mobile                       |320px                            
+|mobile landscape             |480px
+|tablet                       |768px
+|tablet landscape             |1024px
+|destop                       |1280px
+|large destop                 |1440px
+|extra large destop           |1920px
+|extra large destop           |2560px
+|extra large destop           |3840px
+|extra large destop           |5120px
+|extra large destop           |7680px
+|extra large destop           |10240px
+
+|extra large destop           |15260px
+|extra large destop           |20480px
+|extra large destop           |30720px 
+|extra large destop           |40960px
+
+
+what is boostrap cdn?
+boostrap cdn (content delivery network)is a service that allow you 
+to link to boostrap's css and jacascript files.it allows developers
+to quickly and easily include boostrap in their project without having to dowloand and host the files themeselves.
+
+types of cdn?
+there are serveral type of cdn 
+
+cdn:to a content delivery networks each serving different purposes
+and use cases.here are some common types:
+
+1)offline cdn
+there are several types to a content delivery networks,each serving different purposes and use cases.here are some common type:
+
+2)online cdn
+online cdn refers to a content delivery network that is not connected to the internet.it is tyoically used for local declopment
+and testing purpose,allowing devlopers to work with static files 
+without needing an internet  connection.
+
+-->
+
+===================================================================
+<!-->
+
+type of cdn?
