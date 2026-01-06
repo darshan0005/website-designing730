@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aptitude Test — Take & Submit Screenshot</title>
+  <style>
+    :root{--bg:#f3f6fb;--card:#fff;--accent:#0b74de;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#0b1220;padding:20px}
+    .wrap{max-width:900px;margin:0 auto}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(6,18,40,0.06);margin-bottom:14px}
+    h1{margin:0 0 6px 0}
+    .meta{color:var(--muted);font-size:0.95rem}
+    .question{margin:12px 0;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(11,116,222,0.03),transparent)}
+    .options{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    label.option{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px;border:1px solid rgba(11,20,34,0.04);cursor:pointer}
+    input[type=radio]{accent-color:var(--accent)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    button{padding:10px 12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600}
+    button.ghost{background:transparent;border:1px solid rgba(11,20,34,0.06);color:inherit}
+    #resultCard{padding:18px;text-align:center}
+    #resultCard .score{font-size:2rem;font-weight:800}
+    .uploadPreview{max-width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid rgba(11,20,34,0.06)}
+    .success{color:green;font-weight:700}
+    footer{font-size:0.9rem;color:var(--muted);margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Aptitude Test</h1>
+      <div class="meta">Complete the short aptitude test below. After you see your result, you can download a result image or upload a screenshot of results to submit.</div>
+    </div>
+
+    <form id="testForm" class="card">
+      <div id="questions"></div>
+
+      <div class="controls">
+        <button type="button" id="submitTest">Submit Test</button>
+        <button type="reset" class="ghost" id="resetBtn">Reset</button>
+      </div>
+    </form>
+
+    <div id="result" class="card" style="display:none">
+      <div id="resultCard">
+        <div style="font-size:1.1rem;font-weight:800">Your Result</div>
+        <div class="score" id="scoreText">0 / 0</div>
+        <div id="levelText" class="meta">-</div>
+        <div style="margin-top:12px">
+          <button id="downloadResult">Download Result Image</button>
+          <button id="retake" class="ghost">Retake Test</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:800">Submit a Screenshot of Your Results</div>
+      <div class="meta">If you completed an external aptitude test, upload a screenshot here. Or upload the downloaded result image.</div>
+      <input type="file" id="screenshotInput" accept="image/*" style="margin-top:10px">
+      <div id="previewArea"></div>
+      <div style="margin-top:10px" class="controls">
+        <button id="submitScreenshot">Submit Screenshot</button>
+      </div>
+      <div id="submitStatus" style="margin-top:8px"></div>
+    </div>
+
+    <footer>Note: This demo stores uploaded screenshots locally in your browser (not sent to a server). Use the Download button to create a PNG of your result for submission elsewhere.</footer>
+  </div>
+
+  <!-- html2canvas for result image capture -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // Sample aptitude questions
+    const QUESTIONS = [
+      {q: 'If 5 workers take 6 days to finish a job, how many days will 3 workers take (same rate)?',
+       opts: ['10 days','9 days','12 days','8 days'], a:2},
+      {q: 'Find the next number in the series: 2, 4, 8, 16, ?', opts: ['20','30','32','24'], a:3},
+      {q: 'If A is taller than B, and B is taller than C, which is true?', opts:['A shorter than C','C taller than A','A taller than C','All equal'], a:3},
+      {q: 'Choose the odd one out: 2, 3, 5, 9, 11', opts:['3','5','9','11'], a:3},
+      {q: 'A clock shows 3:15. The minute hand is at 3. Where is the hour hand?', opts:['Exactly at 3','Between 3 and 4','At 4','Between 2 and 3'], a:2}
+    ];
+
+    const qContainer = document.getElementById('questions');
+    function renderQuestions(){
+      qContainer.innerHTML = '';
+      QUESTIONS.forEach((qq,i)=>{
+        const div = document.createElement('div'); div.className='question';
+        div.innerHTML = `<div style="font-weight:700">Q${i+1}. ${qq.q}</div><div class="options" id="opts${i}"></div>`;
+        qContainer.appendChild(div);
+        const opts = div.querySelector('.options');
+        qq.opts.forEach((opt,j)=>{
+          const id = `q${i}o${j}`;
+          const lbl = document.createElement('label'); lbl.className='option'; lbl.htmlFor=id;
+          lbl.innerHTML = `<input type="radio" name="q${i}" id="${id}" value="${j}"><div>${opt}</div>`;
+          opts.appendChild(lbl);
+        });
+      });
+    }
+    renderQuestions();
+
+    document.getElementById('submitTest').addEventListener('click', ()=>{
+      let score=0;
+      QUESTIONS.forEach((qq,i)=>{
+        const sel = document.querySelector(`input[name=q${i}]:checked`);
+        if(sel && parseInt(sel.value,10)===qq.a) score++;
+      });
+      const total = QUESTIONS.length;
+      showResult(score, total);
+    });
+
+    function showResult(score,total){
+      document.getElementById('result').style.display='block';
+      document.getElementById('scoreText').textContent = `${score} / ${total}`;
+      const pct = Math.round((score/total)*100);
+      let level = 'Beginner';
+      if(pct>=80) level='Excellent'; else if(pct>=60) level='Good'; else if(pct>=40) level='Average';
+      document.getElementById('levelText').textContent = `${pct}% — ${level}`;
+      // scroll to result
+      document.getElementById('result').scrollIntoView({behavior:'smooth'});
+    }
+
+    document.getElementById('retake').addEventListener('click', ()=>{ document.getElementById('result').style.display='none'; document.getElementById('testForm').reset(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+    // Download result as image using html2canvas
+    document.getElementById('downloadResult').addEventListener('click', async ()=>{
+      const el = document.getElementById('resultCard');
+      const canvas = await html2canvas(el, {scale:2, backgroundColor: null});
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = `aptitude_result_${Date.now()}.png`;
+      a.click();
+    });
+
+    // Screenshot upload preview & submit (local simulated upload)
+    const screenshotInput = document.getElementById('screenshotInput');
+    const previewArea = document.getElementById('previewArea');
+    let uploadedFile = null;
+    screenshotInput.addEventListener('change', (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      uploadedFile = f;
+      const url = URL.createObjectURL(f);
+      previewArea.innerHTML = `<img src="${url}" alt="screenshot" class="uploadPreview">`;
+    });
+
+    document.getElementById('submitScreenshot').addEventListener('click', ()=>{
+      const status = document.getElementById('submitStatus');
+      if(!uploadedFile){ status.innerHTML = '<span style="color:crimson;font-weight:700">No file selected — choose a screenshot to submit.</span>'; return; }
+      // Simulate a submission by saving to localStorage with data URL (for demo)
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        try{
+          const data = reader.result;
+          const entry = {name: uploadedFile.name, time: new Date().toISOString(), data};
+          // store array
+          const arr = JSON.parse(localStorage.getItem('apt_screens')||'[]');
+          arr.push(entry);
+          localStorage.setItem('apt_screens', JSON.stringify(arr));
+          status.innerHTML = '<span class="success">Screenshot submitted successfully (saved locally).</span>';
+        }catch(err){ status.textContent = 'Failed to save screenshot.'; }
+      };
+      reader.readAsDataURL(uploadedFile);
+    });
+ 
+    // Reset button clears preview & result
+    document.getElementById('resetBtn').addEventListener('click', ()=>{ document.getElementById('result').style.display='none'; previewArea.innerHTML=''; document.getElementById('submitStatus').innerHTML=''; uploadedFile=null; });
+  </script>
+</body>
+</html>

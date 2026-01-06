@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Search Button</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 120px;
+            font-family: Arial;
+        }
+
+        input[type="text"] {
+            width: 350px;
+            height: 35px;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #dcdcdc;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #f8f9fa;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            padding: 8px 18px;
+            margin: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e8e8e8;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>Google Style Search</h2>
+
+    <form action="https://www.google.com/search" method="GET" target="_blank">
+        <input type="text" name="q" placeholder="Search Google...">
+        <br>
+        <input type="submit" value="Google Search">
+    </form>
+
+</body>
+</html>

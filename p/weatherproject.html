@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+        <div class="weather-info">
+            <h3>${data.name}, ${data.sys.country}</h3>
+            <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">
+            <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
+            <p><strong>Weather:</strong> ${data.weather[0].description}</p>
+            <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+            <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+        </div>
+    `;
+
+    document.getElementById("weatherResult").innerHTML = weatherDetails;
+}
+
+<body>
+      <style>* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #6dd5fa, #2980b9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px;
+    width: 350px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 16px;
+}
+
+.search-box button {
+    padding: 10px;
+    border: none;
+    background: #0077ff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.weather-info {
+    margin-top: 20px;
+}
+
+.weather-info h3 {
+    font-size: 22px;
+}
+
+.weather-info img {
+    width: 80px;
+}
+</style>
+
+    <div class="container">
+        <h2>Weather App</h2>
+        <div class="search-box">
+            <input type="text" id="city" placeholder="Enter city name">
+            <button onclick="getWeather()">Search</button>
+        </div>
+
+        <div id="weatherResult">
+            <!-- Weather data will appear here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

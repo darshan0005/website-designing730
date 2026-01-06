@@ -1,0 +1,15 @@
+// Shortcode to display a button that shows "Hello User"
+function wp_hello_user_button() {
+    ob_start();
+    ?>
+    <button id="helloUserBtn">Click Me</button>
+
+    <script>
+        document.getElementById("helloUserBtn").addEventListener("click", function() {
+            alert("Hello User");
+        });
+    </script>
+    <?php
+    return ob_start();
+}
+add_shortcode('hello_user', 'wp_hello_user_button');

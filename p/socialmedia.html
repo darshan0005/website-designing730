@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Presentation & Elevator Pitch Submission</title>
+<style>
+  :root{--bg:#f7fbff;--card:#fff;--accent:#0b74de;--muted:#58606b}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:18px;background:var(--bg);color:#0b1220}
+  .wrap{max-width:900px;margin:0 auto}
+  .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 8px 28px rgba(10,20,40,0.06);margin-bottom:12px}
+  h1{margin:0 0 8px 0;font-size:1.25rem}
+  label{display:block;margin-top:10px;font-weight:600}
+  input[type=text], input[type=url], textarea {width:100%;padding:10px;border-radius:8px;border:1px solid rgba(10,20,30,0.08);margin-top:6px}
+  input[type=file]{margin-top:8px}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  button{background:var(--accent);color:white;border:0;padding:10px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+  button.ghost{background:transparent;border:1px solid rgba(10,20,30,0.06);color:inherit}
+  .meta{color:var(--muted);font-size:0.95rem;margin-top:6px}
+  .preview{margin-top:10px}
+  .ok{color:green;font-weight:700}
+  .err{color:#b00020;font-weight:700}
+  pre{background:#f1f5f9;padding:8px;border-radius:6px;overflow:auto}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Presentation & Elevator Pitch Submission</h1>
+      <div class="meta">Upload PPT and paste your video/Zoom link. The page packages everything into a ZIP ready for submission.</div>
+    </div>
+
+    <div class="card" id="formCard">
+      <label for="name">Your name</label>
+      <input id="name" type="text" placeholder="e.g., Darshan Patel">
+
+      <label for="course">Course / Topic</label>
+      <input id="course" type="text" placeholder="e.g., Corporate Culture — Project Briefing">
+
+      <label for="pptFile">PowerPoint file (.ppt / .pptx)</label>
+      <input id="pptFile" type="file" accept=".ppt,.pptx,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+
+      <label for="videoLink">Zoom / MP4 / YouTube link (paste here)</label>
+      <input id="videoLink" type="url" placeholder="https://zoom.us/rec/share/...  or https://youtu.be/...  or file-mp4 URL">
+
+      <label for="note">Short note (optional)</label>
+      <textarea id="note" rows="3" placeholder="Any comments for assessor..."></textarea>
+
+      <div style="margin-top:12px" class="row">
+        <button id="packageBtn">Create submission ZIP</button>
+        <button id="previewBtn" class="ghost" type="button">Preview package contents</button>
+        <button id="clearBtn" class="ghost" type="button">Clear</button>
+      </div>
+
+      <div class="preview" id="previewArea"></div>
+    </div>
+
+    <div class="card" id="outputCard" style="display:none">
+      <div style="font-weight:800">Package ready</div>
+      <div class="meta" id="outMeta"></div>
+      <div style="margin-top:8px">
+        <a id="downloadLink" href="#" download class="ok">Download ZIP</a>
+      </div>
+      <div style="margin-top:10px">
+        <div class="meta">You can upload this ZIP to your LMS or attach to email. Keep a copy for your records.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:800">How to record & host your Zoom video</div>
+      <ol>
+        <li>Open Zoom → Start meeting → Share screen (your slides)</li>
+        <li>Record to Cloud (if available) or Local. After finishing, save/export MP4.</li>
+        <li>Upload MP4 to YouTube (unlisted) or to your cloud storage and paste the link above.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- JSZip CDN (to create zip client-side) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <script>
+    // Utility & UI
+    const nameEl = document.getElementById('name');
+    const courseEl = document.getElementById('course');
+    const pptEl = document.getElementById('pptFile');
+    const videoEl = document.getElementById('videoLink');
+    const noteEl = document.getElementById('note');
+    const packageBtn = document.getElementById('packageBtn');
+    const previewBtn = document.getElementById('previewBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const previewArea = document.getElementById('previewArea');
+    const outputCard = document.getElementById('outputCard');
+    const outMeta = document.getElementById('outMeta');
+    const downloadLink = document.getElementById('downloadLink');
+
+    function isProbablyVideoLink(url){
+      if(!url) return false;
+      try{
+        const u = new URL(url);
+        // simple checks: youtube, youtu.be, zoom, vimeo, http(s) mp4 link
+        const host = u.hostname.toLowerCase();
+        if(host.includes('youtube') || host.includes('youtu.be') || host.includes('zoom.') || host.includes('vimeo')) return true;
+        const ext = u.pathname.split('.').pop().toLowerCase();
+        if(ext === 'mp4' || ext === 'mov' || ext === 'webm') return true;
+        return true; // permit other URLs (instructors often accept cloud links)
+      }catch(e){
+        return false;
+      }
+    }
+
+    previewBtn.addEventListener('click', ()=>{
+      previewArea.innerHTML = '';
+      const files = pptEl.files;
+      const lines = [];
+      lines.push('<div><strong>Preview</strong></div>');
+      lines.push(`<div class="meta">Name: ${escapeHtml(nameEl.value || '(not set)')}</div>`);
+      lines.push(`<div class="meta">Course: ${escapeHtml(courseEl.value || '(not set)')}</div>`);
+      lines.push(`<div class="meta">Video link: ${escapeHtml(videoEl.value || '(not set)')}</div>`);
+      if(files.length) {
+        const f = files[0];
+        lines.push(`<div style="margin-top:8px">Selected PPT: <strong>${escapeHtml(f.name)}</strong> — ${humanFileSize(f.size)}</div>`);
+      } else {
+        lines.push('<div style="margin-top:8px" class="err">No PPT selected</div>');
+      }
+      if(noteEl.value) lines.push(`<div style="margin-top:8px;"><strong>Note:</strong> ${escapeHtml(noteEl.value)}</div>`);
+      previewArea.innerHTML = lines.join('');
+    });
+
+    clearBtn.addEventListener('click', ()=>{
+      nameEl.value=''; courseEl.value=''; pptEl.value=''; videoEl.value=''; noteEl.value='';
+      previewArea.innerHTML=''; outputCard.style.display='none';
+    });
+
+    packageBtn.addEventListener('click', async ()=>{
+      previewArea.innerHTML = '';
+      outputCard.style.display='none';
+      const files = pptEl.files;
+      if(!files || files.length===0){ previewArea.innerHTML = '<div class="err">Please choose your PowerPoint file (.ppt or .pptx).</div>'; return; }
+      const f = files[0];
+      // minimal validations
+      const videoURL = videoEl.value.trim();
+      if(videoURL && !isProbablyVideoLink(videoURL)){
+        previewArea.innerHTML = '<div class="err">The video link looks invalid. Please paste a valid YouTube/Zoom/MP4 link.</div>'; return;
+      }
+
+      try{
+        previewArea.innerHTML = '<div class="meta">Reading PPT file and creating ZIP (client-side)...</div>';
+        const arrayBuffer = await f.arrayBuffer();
+
+        const zip = new JSZip();
+        // add pptx bytes
+        zip.file(f.name, arrayBuffer);
+
+        // metadata
+        const metadata = {
+          name: nameEl.value || '',
+          course: courseEl.value || '',
+          video_link: videoURL || '',
+          note: noteEl.value || '',
+          original_filename: f.name,
+          file_size: f.size,
+          timestamp: (new Date()).toISOString()
+        };
+        zip.file('metadata.txt', createMetadataText(metadata));
+
+        // small HTML with link for convenience
+        const linkHtml = `<!doctype html><meta charset="utf-8"><title>Submission Link</title><body><h2>Submission for ${escapeHtml(metadata.name||'(no name)')}</h2><p>Video/Recording: <a href="${escapeHtml(videoURL||'#')}" target="_blank">${escapeHtml(videoURL||'No link provided')}</a></p></body></html>`;
+        zip.file('video_link.html', linkHtml);
+
+        // generate zip blob
+        const outName = `submission_${(metadata.name||'student').replace(/\\s+/g,'_')}_${Date.now()}.zip`;
+        const blob = await zip.generateAsync({type:'blob'});
+
+        // create download link
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = outName;
+        outMeta.innerHTML = `ZIP created: <strong>${outName}</strong> — contains: ${f.name}, metadata.txt, video_link.html`;
+        outputCard.style.display = 'block';
+
+        previewArea.innerHTML = `<div class="ok">ZIP generated successfully. Click "Download ZIP" to save it locally and submit to your LMS/instructor.</div>`;
+        // revoke after some time to avoid memory leaks
+        setTimeout(()=>URL.revokeObjectURL(url), 1000 * 60 * 5);
+      }catch(err){
+        previewArea.innerHTML = `<div class="err">Failed to create ZIP: ${escapeHtml(err && err.message ? err.message : String(err))}</div>`;
+      }
+    });
+
+    // small helpers
+    function humanFileSize(bytes){
+      const thresh = 1024;
+      if(Math.abs(bytes) < thresh) return bytes + ' B';
+      const units = ['KB','MB','GB','TB','PB','EB','ZB','YB'];
+      let u = -1;
+      do { bytes /= thresh; ++u; } while(Math.abs(bytes) >= thresh && u < units.length - 1);
+      return bytes.toFixed(1) + ' ' + units[u];
+    }
+    function createMetadataText(meta){
+      return `Name: ${meta.name || ''}\nCourse/Topic: ${meta.course || ''}\nOriginal PPT: ${meta.original_filename || ''}\nFile size (bytes): ${meta.file_size || 0}\nVideo link: ${meta.video_link || ''}\nNote: ${meta.note || ''}\nSubmitted at: ${meta.timestamp}\n`;
+    }
+    function escapeHtml(s){
+      if(!s) return '';
+      return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    }
+  </script>
+</body>
+</html>

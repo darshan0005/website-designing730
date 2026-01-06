@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>School Management — Demo</title>
+  <style>
+    :root{
+      --bg:#f6f9ff;
+      --card:#ffffff;
+      --accent:#0b74de;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --accent-contrast: #fff;
+      color-scheme: light;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#0b1220}
+
+    .wrap{max-width:1100px;margin:18px auto;padding:16px}
+    header{display:flex;gap:16px;align-items:center}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:84px;height:84px;object-fit:cover;border-radius:10px;box-shadow:0 6px 18px rgba(11,20,34,0.08)}
+    h1{font-size:1.25rem;margin:0}
+    .meta{color:var(--muted);font-size:0.95rem}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 20px rgba(12,18,30,0.06)}
+
+    /* Left column content */
+    .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .btn{padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-contrast);font-weight:600}
+    .ghost{background:transparent;border:1px solid rgba(11,20,34,0.06);color:inherit}
+
+    .clock{font-size:1.5rem;font-weight:700}
+    .small{font-size:0.95rem}
+
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:10px;text-align:left;border-bottom:1px solid rgba(11,20,34,0.04)}
+    th{font-weight:700;color:var(--muted)}
+    tr.active{background:linear-gradient(90deg, rgba(11,116,222,0.06), rgba(11,116,222,0.02))}
+    .tag{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(11,116,222,0.1);font-weight:600;color:var(--accent);font-size:0.85rem}
+
+    /* Right column */
+    .form-row{display:flex;gap:8px;margin-bottom:8px}
+    input,select{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(11,20,34,0.06)}
+    label{font-size:0.9rem;color:var(--muted);display:block;margin-bottom:6px}
+    .thumb-preview{width:100%;height:160px;border-radius:8px;object-fit:cover;background:linear-gradient(180deg,#e9f0ff,#fff);display:block}
+
+    footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
+
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr;}
+      .logo img{width:64px;height:64px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <!-- Replace 'school.jpg' with your school's photo or URL -->
+        <img id="schoolPhoto" src="school.jpg" alt="School Photo">
+        <div>
+          <h1>Greenfield High School</h1>
+          <div class="meta">Address: 12 Meadow Lane · Phone: (000) 123‑4567</div>
+        </div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="clock" id="clock">--:--:--</div>
+        <div class="meta small" id="date">Loading date...</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">Today's Lecture Schedule</div>
+              <div class="meta small">Highlight shows the current class</div>
+            </div>
+            <div class="controls">
+              <button class="btn" id="addDemo">Add Demo Class</button>
+              <button class="btn ghost" id="clearSchedule">Clear Schedule</button>
+            </div>
+          </div>
+
+          <table id="scheduleTable" aria-label="Lecture schedule">
+            <thead>
+              <tr><th>Time</th><th>Subject</th><th>Room</th><th>Teacher</th></tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <!-- rows inserted by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:800">Time Management</div>
+            <div class="meta small">Set school start/end and break times</div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label>School day starts at</label>
+            <input type="time" id="dayStart" value="08:30">
+            <label>School day ends at</label>
+            <input type="time" id="dayEnd" value="15:00">
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+            <label style="margin:0">Background color</label>
+            <input type="color" id="bgColor" value="#f6f9ff">
+          </div>
+
+          <div style="margin-top:12px">
+            <button class="btn" id="applyTime">Apply</button>
+            <button class="btn ghost" id="resetDefaults">Reset</button>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <div style="font-weight:800">Add / Edit Lecture</div>
+          <div class="meta small">Fill details and click Add</div>
+
+          <div style="margin-top:10px">
+            <label>Start time</label>
+            <input type="time" id="lecStart">
+            <label>End time</label>
+            <input type="time" id="lecEnd">
+            <label>Subject</label>
+            <input id="lecSub" placeholder="Mathematics">
+            <label>Room</label>
+            <input id="lecRoom" placeholder="101">
+            <label>Teacher</label>
+            <input id="lecTeacher" placeholder="Mrs. Smith">
+
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn" id="addLecture">Add Lecture</button>
+              <button class="btn ghost" id="uploadPhotoBtn">Upload School Photo</button>
+            </div>
+
+            <input type="file" id="photoInput" accept="image/*" style="display:none">
+            <img id="previewThumb" class="thumb-preview" alt="Preview" style="margin-top:10px;display:none">
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="font-weight:800">Quick Actions</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px">
+            <button class="btn" id="exportBtn">Export Schedule (JSON)</button>
+            <button class="btn ghost" id="importBtn">Import Schedule (JSON)</button>
+            <input type="file" id="importFile" accept="application/json" style="display:none">
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>Tip: Replace the image file named "school.jpg" next to this HTML or click Upload School Photo to change the header image.</footer>
+  </div>
+
+  <script>
+    // Simple schedule data model
+    let schedule = [
+      {start: '08:30', end: '09:15', subject: 'Mathematics', room: '101', teacher: 'Ms. Rao'},
+      {start: '09:20', end: '10:05', subject: 'English', room: '102', teacher: 'Mr. Kumar'},
+      {start: '10:10', end: '10:30', subject: 'Break', room: '-', teacher: '-'},
+      {start: '10:35', end: '11:20', subject: 'Science', room: '201', teacher: 'Mrs. Desai'},
+      {start: '11:25', end: '12:10', subject: 'History', room: '103', teacher: 'Mr. Patel'},
+    ];
+
+    const scheduleBody = document.getElementById('scheduleBody');
+    const clockEl = document.getElementById('clock');
+    const dateEl = document.getElementById('date');
+
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function nowTime(){ const d=new Date(); return pad(d.getHours())+ ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
+    function nowHM(){ const d=new Date(); return pad(d.getHours())+ ':' + pad(d.getMinutes()); }
+
+    function renderSchedule(){
+      scheduleBody.innerHTML = '';
+      const now = nowHM();
+      schedule.sort((a,b)=> a.start.localeCompare(b.start));
+      schedule.forEach((s,idx)=>{
+        const tr = document.createElement('tr');
+        // mark active
+        if(now >= s.start && now < s.end && s.subject.toLowerCase() !== 'break') tr.classList.add('active');
+        tr.innerHTML = `<td>${s.start} — ${s.end}</td><td>${s.subject}</td><td>${s.room}</td><td>${s.teacher}</td>`;
+        scheduleBody.appendChild(tr);
+      });
+    }
+
+    // clock update
+    function tick(){
+      const d = new Date();
+      clockEl.textContent = nowTime();
+      dateEl.textContent = d.toDateString();
+      renderSchedule();
+    }
+    setInterval(tick, 1000);
+    tick();
+
+    // Add lecture
+    document.getElementById('addLecture').addEventListener('click', ()=>{
+      const s = document.getElementById('lecStart').value;
+      const e = document.getElementById('lecEnd').value;
+      const sub = document.getElementById('lecSub').value.trim() || 'Untitled';
+      const room = document.getElementById('lecRoom').value.trim() || '-';
+      const teacher = document.getElementById('lecTeacher').value.trim() || '-';
+      if(!s||!e){ alert('Please set start and end times.'); return; }
+      schedule.push({start: s, end: e, subject: sub, room, teacher});
+      // clear inputs
+      document.getElementById('lecStart').value=''; document.getElementById('lecEnd').value='';
+      document.getElementById('lecSub').value=''; document.getElementById('lecRoom').value=''; document.getElementById('lecTeacher').value='';
+      renderSchedule();
+    });
+
+    // Demo & clear
+    document.getElementById('addDemo').addEventListener('click', ()=>{
+      schedule.push({start:'12:15',end:'13:00',subject:'Art',room:'Studio',teacher:'Ms. Chawla'});
+      renderSchedule();
+    });
+    document.getElementById('clearSchedule').addEventListener('click', ()=>{ if(confirm('Clear schedule?')){ schedule = []; renderSchedule(); } });
+
+    // Time management apply
+    document.getElementById('applyTime').addEventListener('click', ()=>{
+      const bg = document.getElementById('bgColor').value;
+      document.documentElement.style.setProperty('--bg', bg);
+      alert('Background color updated. School start/end times saved locally.');
+    });
+    document.getElementById('resetDefaults').addEventListener('click', ()=>{
+      document.documentElement.style.setProperty('--bg','#f6f9ff'); document.getElementById('dayStart').value='08:30'; document.getElementById('dayEnd').value='15:00'; document.getElementById('bgColor').value='#f6f9ff';
+    });
+
+    // Upload photo
+    document.getElementById('uploadPhotoBtn').addEventListener('click', ()=> document.getElementById('photoInput').click());
+    document.getElementById('photoInput').addEventListener('change', (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      const url = URL.createObjectURL(f);
+      document.getElementById('schoolPhoto').src = url;
+      const preview = document.getElementById('previewThumb'); preview.src = url; preview.style.display='block';
+    });
+
+    // Export / Import
+    document.getElementById('exportBtn').addEventListener('click', ()=>{
+      const a = document.createElement('a');
+      const data = JSON.stringify(schedule, null, 2);
+      const blob = new Blob([data], {type:'application/json'});
+      a.href = URL.createObjectURL(blob);
+      a.download = 'schedule.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+    document.getElementById('importBtn').addEventListener('click', ()=> document.getElementById('importFile').click());
+    document.getElementById('importFile').addEventListener('change', (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        try{ schedule = JSON.parse(reader.result); renderSchedule(); alert('Imported successfully'); }catch(err){ alert('Invalid JSON file'); }
+      };
+      reader.readAsText(f);
+    });
+
+    // Import file support
+    document.getElementById('importFile').addEventListener('click', (e)=>{ e.target.value = null; });
+
+    // Initial render
+    renderSchedule();
+  </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirLines - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <image>C:\class 1\car\image 1.webp</image>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f8fc;
+  color: #333;
+}
+
+header {
+  background: #004080;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 80px;
+}
+
+nav {
+  background: #0066cc;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #004080;
+}
+
+.slider {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.slides img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: none;
+}
+
+.content {
+  padding: 40px;
+  text-align: center;
+}
+
+.aircraft-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: white;
+  padding: 15px;
+  border: 1px solid #ccc;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.box img {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form input, form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+form button {
+  background: #004080;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+footer {
+  background: #004080;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 20px;
+}
+
+    </style>
+
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.png" alt="AirLines Logo" class="logo">
+    <h1>Welcome to AirLines Reservation</h1>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="our-aircraft.html">Our AirCraft</a></li>
+      <li><a href="#">Safety</a></li>
+      <li><a href="#">Charters</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- SLIDER -->
+  <div class="slider">
+    <div class="slides">
+      <img src="images/slider1.jpg" alt="Flight 1">
+      <img src="images/slider2.jpg" alt="Flight 2">
+      <img src="images/slider3.jpg" alt="Flight 3">
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="content">
+    <h2>Book Your Flight Easily</h2>
+    <p>Find, compare, and book flights quickly with AirLines. We ensure comfort, safety, and speed for every journey.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 AirLines | Designed by [Your Name]</p>
+  </footer>
+
+  <script>
+    // Simple auto image slider
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slides img');
+    function showSlides() {
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === slideIndex) ? 'block' : 'none';
+      });
+      slideIndex = (slideIndex + 1) % slides.length;
+      setTimeout(showSlides, 3000);
+    }
+    showSlides();
+  </script>
+</body>
+</html>
+ <!--ouraircaft.html-->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Aircraft - AirLines</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="logo" alt="Logo">
+  <h1>Our Aircraft Fleet</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="our-aircraft.html" class="active">Our AirCraft</a></li>
+    <li><a href="#">Safety</a></li>
+    <li><a href="#">Charters</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="content">
+  <h2>Explore Our Modern Fleet</h2>
+  <div class="aircraft-list">
+    <div class="box">
+      <img src="images/slider1.jpg" alt="Airbus A320">
+      <h3>Airbus A320</h3>
+      <p>Efficient and comfortable for medium-haul flights.</p>
+    </div>
+    <div class="box">
+      <img src="images/slider2.jpg" alt="Boeing 737">
+      <h3>Boeing 737</h3>
+      <p>Reliable performance and excellent passenger comfort.</p>
+    </div>
+    <div class="box">
+      <img src="images/slider3.jpg" alt="Boeing 787">
+      <h3>Boeing 787 Dreamliner</h3>
+      <p>Luxury long-distance aircraft with top-tier technology.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 AirLines | Designed by [Your Name]</p>
+</footer>
+
+</body>
+</html>
+<!--contact.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - AirLines</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" class="logo" alt="Logo">
+  <h1>Contact AirLines</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="our-aircraft.html">Our AirCraft</a></li>
+    <li><a href="#">Safety</a></li>
+    <li><a href="#">Charters</a></li>
+    <li><a href="contact.html" class="active">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="content">
+  <h2>Get In Touch</h2>
+  <form>
+    <label>Name:</label>
+    <input type="text" placeholder="Your Name" required>
+    
+    <label>Email:</label>
+    <input type="email" placeholder="Your Email" required>
+    
+    <label>Message:</label>
+    <textarea placeholder="Write your message..." required></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 AirLines | Designed by [Your Name]</p>
+</footer>
+
+</body>
+</html>

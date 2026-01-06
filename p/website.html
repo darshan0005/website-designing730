@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Google‑style Click Page</title>
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Background - soft radial + diagonal stripes for interest */
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      display:flex;align-items:center;justify-content:center;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.06), transparent 15%),
+        linear-gradient(135deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-color:#f6f9ff;
+      background-size: 100% 100%, 20px 20px;
+      min-height:100vh;
+      color:#202124;
+    }
+
+    .card{
+      width:min(780px,92%);
+      text-align:center;
+      padding:48px 32px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(6px) saturate(120%);
+      border-radius:16px;
+      box-shadow: 0 10px 30px rgba(18, 40, 80, 0.08);
+    }
+
+    /* Logo-like wordmark */
+    .logo{
+      font-size:64px;
+      font-weight:700;
+      letter-spacing:2px;
+      margin-bottom:24px;
+      display:flex;gap:6px;align-items:center;justify-content:center;
+    }
+    .logo span{display:inline-block}
+    .logo .g1{color:#4285F4}
+    .logo .g2{color:#DB4437}
+    .logo .g3{color:#F4B400}
+    .logo .g4{color:#4285F4}
+    .logo .g5{color:#0F9D58}
+    .logo .g6{color:#DB4437}
+
+    /* Search box */
+    .search{
+      display:flex;align-items:center;gap:12px;
+      margin:18px auto 22px;
+      max-width:680px;
+      width:100%;
+    }
+    .search input[type="text"]{
+      flex:1;padding:14px 16px;border-radius:24px;border:1px solid rgba(0,0,0,0.12);
+      font-size:18px;outline:none;box-shadow:0 1px 0 rgba(60,64,67,0.08) inset;
+    }
+    .search input[type="text"]:focus{box-shadow:0 4px 18px rgba(66,133,244,0.12)}
+
+    .buttons{display:flex;gap:12px;justify-content:center}
+    .btn{
+      padding:10px 18px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);background:#fff;cursor:pointer;font-size:14px
+    }
+    .btn.primary{background:#f8f9fa}
+    .btn:active{transform:translateY(1px)}
+
+    .small{margin-top:18px;color:rgba(0,0,0,0.55);font-size:13px}
+
+    /* Responsive tweaks */
+    @media (max-width:420px){
+      .logo{font-size:44px}
+      .card{padding:28px 18px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-label="Search page">
+    <!-- Decorative google-like wordmark made from colored letters -->
+    <h1 class="logo" aria-hidden="true">
+      <span class="g1">G</span>
+      <span class="g2">o</span>
+      <span class="g3">o</span>
+      <span class="g4">g</span>
+      <span class="g5">l</span>
+      <span class="g6">e</span>
+    </h1>
+
+    <form id="searchForm" class="search" onsubmit="performSearch(event)">
+      <input id="q" name="q" type="text" inputmode="search" autocomplete="off" placeholder="Search the web or type a URL" aria-label="Search" />
+      <button class="btn" type="button" id="mic" aria-label="Voice" title="Voice (dummy)">🎤</button>
+    </form>
+
+    <div class="buttons">
+      <button class="btn primary" id="searchBtn" onclick="doSearch(false)">Google Search</button>
+      <button class="btn" id="luckyBtn" onclick="doSearch(true)">I'm Feeling Lucky</button>
+    </div>
+
+    <p class="small">This is a demo search page. "Google Search" opens results on Google; "I'm Feeling Lucky" goes to the top result.</p>
+  </main>
+
+  <script>
+    // Build a Google search URL and redirect.
+    function buildGoogleSearchURL(q){
+      const base = 'https://www.google.com/search';
+      const params = new URLSearchParams({q});
+      return base + '?' + params.toString();
+    }
+
+    function doSearch(lucky){
+      const q = document.getElementById('q').value.trim();
+      if(!q){
+        // If empty: open Google homepage or do nothing
+        window.location.href = 'https://www.google.com';
+        return;
+      }
+      if(lucky){
+        // Use 'btnI' parameter to simulate I'm Feeling Lucky (Google may ignore for some users)
+        const url = 'https://www.google.com/search?btnI=1&q=' + encodeURIComponent(q);
+        window.location.href = url;
+      } else {
+        window.location.href = buildGoogleSearchURL(q);
+      }
+    }
+
+    function performSearch(e){
+      e.preventDefault();
+      doSearch(false);
+    }
+
+    // Quick keyboard accessibility: Enter already handled by form submit; add '/' to focus search like many sites
+    document.addEventListener('keydown', (ev)=>{
+      if(ev.key === '/'){
+        const el = document.getElementById('q');
+        if(document.activeElement !== el){ ev.preventDefault(); el.focus(); }
+      }
+    });
+  </script>
+</body>
+</html>

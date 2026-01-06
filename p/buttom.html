@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Example</title>
+    <script>
+        function showMessage() {
+            alert("Hello User");
+        }
+
+        function submitForm() {
+            alert("Form Submitted!");
+        }
+    </script>
+</head>
+<body>
+     <background style="background-color: aqua;"
+    <h2>Submit & Click Button Example</h2>
+
+    <!-- Click Button -->
+    <button onclick="showMessage()">Click Me</button>
+
+    <br><br>
+
+    <!-- Submit Button -->
+    <form onsubmit="submitForm(); return false;">
+        <input type="text" placeholder="Enter something">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Mobile Photo Capture</title>
+  <style>
+    :root{--accent:#0ea5a4;--bg:#0f1724;--card:#0b1220;color-scheme: dark}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071023,#0b1220);color:#e6eef6}
+    .app{max-width:900px;margin:0 auto;padding:16px}
+    header{display:flex;gap:12px;align-items:center}
+    h1{font-size:1.1rem;margin:0}
+    .card{background:rgba(255,255,255,0.02);padding:12px;border-radius:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6);margin-top:12px}
+    #videoWrap{position:relative;border-radius:12px;overflow:hidden;background:#000}
+    video,canvas,img{width:100%;height:auto;display:block}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    button, .fileLabel{appearance:none;border:0;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg,var(--accent),#047b76);color:#051014;font-weight:600}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
+    .btnGroup{display:flex;gap:8px}
+    .small{padding:8px 10px;font-size:0.95rem}
+    #thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:12px}
+    .thumb{position:relative;border-radius:10px;overflow:hidden;background:#071221}
+    .thumb img{height:140px;object-fit:cover;width:100%}
+    .meta{padding:8px;font-size:0.85rem}
+    footer{margin-top:14px;font-size:0.82rem;color:rgba(230,238,246,0.6)}
+    @media(min-width:700px){h1{font-size:1.3rem}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Mobile Photo Capture</h1>
+      <div style="margin-left:auto;font-size:0.85rem;color:rgba(230,238,246,0.7)">Open on your phone for camera access</div>
+    </header>
+
+    <div class="card">
+      <div id="videoWrap">
+        <video id="video" playsinline autoplay muted></video>
+        <canvas id="canvas" style="display:none"></canvas>
+      </div>
+
+      <div class="controls">
+        <div class="btnGroup">
+          <button id="capture" class="small">Capture</button>
+          <button id="switch" class="small ghost">Switch Camera</button>
+          <button id="download" class="small ghost">Download Last</button>
+        </div>
+
+        <label class="fileLabel small">
+          Choose from gallery
+          <input id="file" type="file" accept="image/*" capture style="display:none">
+        </label>
+
+        <button id="clear" class="small ghost">Clear Thumbnails</button>
+      </div>
+
+      <div id="thumbs"></div>
+    </div>
+
+    <footer>Permissions: Allow camera access when prompted. Works on modern mobile browsers (Chrome, Safari, Edge). If camera doesn't start, use the gallery input.</footer>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const captureBtn = document.getElementById('capture');
+    const switchBtn = document.getElementById('switch');
+    const downloadBtn = document.getElementById('download');
+    const fileInput = document.getElementById('file');
+    const thumbs = document.getElementById('thumbs');
+
+    let currentStream = null;
+    let useFacingMode = 'environment'; // try back camera first
+    let lastBlob = null;
+
+    async function startCamera(){
+      stopStream();
+      const constraints = {
+        audio: false,
+        video: { facingMode: { exact: useFacingMode } }
+      };
+      try{
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+      }catch(err){
+        // fallback if exact facingMode isn't available
+        try{
+          currentStream = await navigator.mediaDevices.getUserMedia({video: { facingMode: useFacingMode }, audio:false});
+        }catch(err2){
+          try{
+            currentStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false});
+          }catch(err3){
+            console.error('camera error', err3);
+            alert('Could not access camera. Use the "Choose from gallery" button instead.');
+            return;
+          }
+        }
+      }
+      video.srcObject = currentStream;
+      await video.play();
+    }
+
+    function stopStream(){
+      if(currentStream){
+        currentStream.getTracks().forEach(t=>t.stop());
+        currentStream = null;
+      }
+    }
+
+    captureBtn.addEventListener('click', ()=>{
+      if(!video || video.readyState < 2){
+        alert('Camera not ready yet. Try selecting from gallery or allow camera access.');
+        return;
+      }
+      const w = video.videoWidth;
+      const h = video.videoHeight;
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, w, h);
+      canvas.toBlob(blob=>{
+        lastBlob = blob;
+        addThumb(URL.createObjectURL(blob));
+      }, 'image/jpeg', 0.92);
+    });
+
+    switchBtn.addEventListener('click', async ()=>{
+      useFacingMode = (useFacingMode === 'environment') ? 'user' : 'environment';
+      await startCamera();
+    });
+
+    downloadBtn.addEventListener('click', ()=>{
+      if(!lastBlob){ alert('No photo to download. Capture or choose one first.'); return; }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(lastBlob);
+      a.download = `photo_${Date.now()}.jpg`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    fileInput.addEventListener('change', e=>{
+      const f = e.target.files[0];
+      if(!f) return;
+      const url = URL.createObjectURL(f);
+      lastBlob = f;
+      addThumb(url, f.name);
+    });
+
+    function addThumb(src, name='Captured image'){
+      const div = document.createElement('div');
+      div.className = 'thumb card';
+      div.innerHTML = `\n        <img src="${src}" alt="thumb">\n        <div class="meta">${name} \n          <div style=\"margin-top:6px;display:flex;gap:8px\">\n            <button class=\"small\" onclick=\"downloadThis(this)\">Download</button>\n            <button class=\"small ghost\" onclick=\"removeThis(this)\">Remove</button>\n          </div>\n        </div>`;
+      thumbs.prepend(div);
+    }
+
+    function downloadThis(btn){
+      const img = btn.closest('.thumb').querySelector('img');
+      if(!img) return;
+      fetch(img.src).then(r=>r.blob()).then(blob=>{
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `photo_${Date.now()}.jpg`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+    }
+
+    function removeThis(btn){
+      const el = btn.closest('.thumb');
+      if(el) el.remove();
+    }
+
+    document.getElementById('clear').addEventListener('click', ()=>{ thumbs.innerHTML=''; lastBlob=null; });
+
+    // Start camera on load if available
+    (async ()=>{
+      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+        await startCamera();
+      }else{
+        console.warn('getUserMedia not supported');
+      }
+    })();
+
+    // stop camera on page hide
+    document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stopStream(); else startCamera(); });
+    window.addEventListener('beforeunload', stopStream);
+  </script>
+</body>
+</html>
