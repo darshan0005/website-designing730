@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>tailwinds container</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+<!-- taiwinds script -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+<!-- tailwinds header -->
+<section id="header" class="flex flex-wrap w-full p-1 shadow-2xl top-0 sticky z-10 bg-white">
+<!--logo  -->
+<div class="w-80">
+<a href="index.html"><img src="images/logo.png" alt="logo" class="w-1/4 animate-spin ms-15" /></a>
+</div>
+<!-- search box -->
+<div class="w-1/2">
+<input type="text" placeholder="search here...." class="p-3 border-1 border-gray-300 w-full mt-2" />
+</div> 
+
+<!-- create account -->
+<div class="w-80">
+<a href="create-account.html"><button type="button" class="bg-black text-white ms-25 p-3 mt-2 rounded-2xl">Create account</button></a>
+</div>
+</section> 
+
+
+<!-- navbar -->
+<nav class="bg-black p-3 flex flex-wrap"> 
+<div class="w-52"><a href="" class="ms-15 text-white text-2xl animate-pulse">Gallery App</a></div>    
+<div class="m-0 p-1 ms-10">
+<ul class="inline-flex space-x-14">
+<li><a href="bollywood.html" class="text-white">bollywood gallery</a></li>
+<li><a href="tollywood.html" class="text-white">tollywood gallery</a></li>
+<li><a href="hollywood.html" class="text-white">hollywood gallery</a></li>
+<li><a href="actors.html" class="text-white">actors gallery</a></li>
+<li><a href="actress.html" class="text-white">actress gallery</a></li>
+<li><a href="awards.html" class="text-white">awards gallery</a></li>
+</ul> 
+</div>
+</nav>
+
+<!-- sliders here -->
+<section id="slider" class="w-full">
+
+<img src="https://fairfieldacc.com/wp-content/uploads/2024/07/Rhythm-India-Website-Slider-1500-x-630.png" alt="sliders" class="w-full h-115" />
+
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/2bc68238310445.575d45bf80ab2.jpg" alt="sliders" class="w-full h-115" />
+
+<img src="https://daex9l847wg3n.cloudfront.net/shemoutputimages/City-Of-Gold/65afbd88b1e0d2e6317d9229/xl_image_16_9_1707138404.jpg" alt="sliders" class="w-full h-115" />
+
+<img src="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Rajjo/65a691c7b1e0d25a88a43f71/xl_image_16_9_1709806174.jpg" alt="sliders" class="w-full h-115" />
+</section>
+<!-- tailwinds card content here -->
+<h1 class="text-center mt-16 text-4xl">Movie Category List 50% off on purchased</h1>
+<hr class="w-86 mx-auto border-1 border-gray-800" />
+
+<section id="content" class="flex flex-wrap mx-auto w-full ms-15">
+<div class="w-1/5 ms-5 p-0 mt-5 shadow-2xl h-95">
+<h1 class="bg-black text-white p-2">Movies Categories</h1> 
+<ul class="p-5 space-y-4">
+<li><a href="#" class="text-black">bollywood gallery</a></li>
+<li><a href="#" class="text-black">tollywood gallery</a></li>
+<li><a href="#" class="text-black">hollywood gallery</a></li>
+<li><a href="#" class="text-black">actors gallery</a></li>
+<li><a href="#" class="text-black">actress gallery</a></li>
+<li><a href="#" class="text-black">awards gallery</a></li>
+</ul>    
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0  bg-orange-300">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0 bg-blue-400">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>                
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0 bg-green-500">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0 bg-red-900 text-white">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0 bg-amber-200">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0 bg-green-100">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+<div class="w-1/5 shadow-2xl m-5 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+
+<div class="w-1/5 shadow-2xl m-5 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+
+<div class="w-1/5 shadow-2xl m-5 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5__mkQPqY-jeQdoQjhbYeNZRKxHTv99mUrw&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Galleries Images</p>
+<p class="text-xl p-0 text-center">Rs. 4500-/</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">Buy Now</button></p>
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- our teams -->
+<div class="w-full mx-auto p-3 mt-10"> 
+<h1 class="text-5xl text-center">Our teams</h1>
+<hr class="w-25 mx-auto" align="left">
+<div class="flex flex-wrap">
+    
+<div class="w-1/4 shadow-2xl m-8 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0pR2J6X_T5WSpHqmZv9RDFuvNTMAgYXARpQ&s" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Team Leader</p>
+<p class="text-xl p-0 text-center">Exp :.12 yrs</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">More Info</button></p>
+
+</div>
+</div>
+
+
+<div class="w-1/4 shadow-2xl m-8 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxoxu1Hk66mBdhsY5nLh1kpqtbvSEhfN0vqv97VXxPy9bQPyoHUe8sKHM6G_nimCITz8s&usqp=CAU" alt="photo" class="w-full" />
+<div class="p-10">
+<p class="text-2xl p-0 text-center">Team Leader</p>
+<p class="text-xl p-0 text-center">Exp :.12 yrs</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">More Info</button></p>
+
+</div>
+</div>
+
+
+<div class="w-1/4 shadow-2xl m-8 p-0">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYpV7eeiD09PssKvRW3OZM20LecXbZBB-pTXjJe5D38VfGf6qY6PUG6BhwDhpKNrggjJk&usqp=CAU" alt="photo" class="w-full" />
+<div class="p-10">
+
+<p class="text-2xl p-0 text-center">Team Leader</p>
+<p class="text-xl p-0 text-center">Exp :.12 yrs</p>
+<p class="text-xl p-0 text-center"><button class="wi-1/2 bg-gray-900 p-3 text-white mt-5 rounded-4xl">More Info</button></p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- client say about us -->
+ 
+<div class="w-full mx-auto p-3 mt-10"> 
+<h1 class="text-5xl text-center">Clients say about us</h1>
+<hr class="w-25 mx-auto" align="left">
+
+  <blockquote class="border-l-4 border-gray-400 pl-6 italic text-xl text-gray-700 mt-8 mx-auto max-w-3xl">
+    "The Gallery App has transformed our movie experience! The categories are easy to browse and the team is super helpful."
+    <span class="block mt-4 font-bold text-gray-900">— Priya Sharma, Mumbai</span>
+  </blockquote>
+
+</div>
+
+<!-- contact us section with address -->
+
+<div class="w-full mx-auto p-3 mt-10"> 
+<h1 class="text-5xl text-center">Contact with Us</h1>
+<hr class="w-25 mx-auto" align="left">
+
+ <div class="flex flex-wrap justify-center gap-10">
+    <!-- Address -->
+    <div class="w-full md:w-1/3 p-4">
+      <h2 class="text-2xl font-bold mb-4">Our Address</h2>
+      <p class="mb-2"><span class="font-semibold">Gallery App Pvt Ltd</span></p>
+      <p class="mb-2">123, Movie Street, Andheri West</p>
+      <p class="mb-2">Mumbai, Maharashtra, 400053</p>
+      <p class="mb-2">India</p>
+      <p class="mb-2">Phone: <a href="tel:+912233445566" class="text-blue-600">+91 22 3344 5566</a></p>
+      <p>Email: <a href="mailto:info@galleryapp.com" class="text-blue-600">info@galleryapp.com</a></p>
+      <p class="mb-2">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7538.589869049665!2d72.82237377770993!3d19.1385629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63d26e62c99%3A0x662718df2b0cdb44!2sPVR%20Citi%20Mall%20Andheri%20(W)%20Mumbai!5e0!3m2!1sen!2sin!4v1755831538159!5m2!1sen!2sin" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </p>
+    </div>
+    <!-- Contact Form -->
+    <div class="w-full md:w-1/2 p-4 bg-white rounded-lg shadow">
+      <h2 class="text-2xl font-bold mb-4">Send Us a Message</h2>
+      <form>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="name">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="email">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded" required>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="message">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full p-3 border border-gray-300 rounded" required></textarea>
+        </div>
+        <button type="submit" class="bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+</section> 
+
+<!-- add footer section  -->
+ <section class="p-5 mt-10 bg-black">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-start text-white">
+        <!-- About -->
+        <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-3">About Gallery App</h2>
+            <p class="text-gray-300 mb-3">Your one-stop destination for movie galleries, actors, awards, and more. Explore, discover, and enjoy exclusive content at unbeatable prices.</p>
+            <p class="text-gray-400 text-sm">&copy; 2024 Gallery App Pvt Ltd. All rights reserved.</p>
+        </div>
+        <!-- Newsletter -->
+        <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-3">Newsletter</h2>
+            <form>
+                <input type="email" placeholder="Your email address" class="w-full p-2 rounded mb-2 text-black bg-white" required>
+                <button type="submit" class="bg-white text-black px-4 py-2 rounded hover:bg-gray-800 w-full">Subscribe</button>
+            </form>
+            <p class="text-gray-300 mt-2 text-sm">Get updates on new galleries and offers!</p>
+        </div>
+        <!-- Social Media -->
+        <div class="w-full md:w-1/4">
+            <h2 class="text-2xl font-bold mb-3">Follow Us</h2>
+            <div class="flex space-x-4">
+                <a href="https://facebook.com" target="_blank" class="hover:text-blue-500" aria-label="Facebook">
+                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5.019 3.676 9.163 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.324 21.163 22 17.019 22 12"></path></svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-blue-400" aria-label="Twitter">
+                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.29 3.9A12.13 12.13 0 0 1 3.1 4.89a4.28 4.28 0 0 0 1.32 5.71c-.7-.02-1.36-.21-1.94-.53v.05a4.28 4.28 0 0 0 3.43 4.19c-.33.09-.68.14-1.04.14-.25 0-.5-.02-.74-.07a4.29 4.29 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54a12.13 12.13 0 0 0 6.56 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.38-.01-.57A8.72 8.72 0 0 0 24 4.59a8.51 8.51 0 0 1-2.54.7z"></path></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-pink-500" aria-label="Instagram">
+                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.334 3.608 1.309.975.975 1.247 2.242 1.309 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.334 2.633-1.309 3.608-.975.975-2.242 1.247-3.608 1.309-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.334-3.608-1.309-.975-.975-1.247-2.242-1.309-3.608C2.175 15.646 2.163 15.266 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.309-3.608.975-.975 2.242-1.247 3.608-1.309C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.392 3.678 1.373c-.98.98-1.242 2.092-1.301 3.373C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.281.321 2.393 1.301 3.373.98.98 2.092 1.242 3.373 1.301C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.321 3.373-1.301.98-.98 1.242-2.092 1.301-3.373.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.281-.321-2.393-1.301-3.373-.98-.98-2.092-1.242-3.373-1.301C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="hover:text-red-600" aria-label="YouTube">
+                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.116C19.425 3.5 12 3.5 12 3.5s-7.425 0-9.39.57A2.994 2.994 0 0 0 .502 6.186C0 8.15 0 12 0 12s0 3.85.502 5.814a2.994 2.994 0 0 0 2.108 2.116C4.575 20.5 12 20.5 12 20.5s7.425 0 9.39-.57a2.994 2.994 0 0 0 2.108-2.116C24 15.85 24 12 24 12s0-3.85-.502-5.814zM9.545 15.568V8.432l6.545 3.568-6.545 3.568z"></path></svg>
+                </a>
+            </div>
+            <p class="text-gray-300 mt-3 text-sm">Connect with us for latest updates!</p>
+        </div>
+    </div>
+ </section>
+<!-- jquery main file -->
+<script src="js/jquery.min.js"></script>
+<!--jquery cycle plugins  -->
+<script src="js/cycle.min.js"></script>
+<!-- slider code here -->
+<script>
+$(document).ready(function(){
+$("#slider").cycle("fade,turnLeft,turnRight,shuffle,zoom");
+})
+</script> 
+</body>
+</html>
